@@ -38,7 +38,7 @@ module TeracyDevCore
       def can_proceed(plugin)
           plugin_name = plugin['name']
 
-          if !Plugin.installed?(plugin_name)
+          if !TeracyDev::Plugin.installed?(plugin_name)
             @logger.warn("#{plugin_name} is not installed")
             return false
           end
