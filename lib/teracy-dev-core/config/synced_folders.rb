@@ -8,22 +8,19 @@ module TeracyDevCore
       def configure_node(settings, config)
         synced_folders_settings = settings['vm']['synced_folders'] ||= []
         @logger.debug("configure_node: #{synced_folders_settings}")
+        synced_folders_settings.each do |synced_folder|
+          options = {}
+          host = synced_folder['host']
+          guest = synced_folder['guest']
 
-        synced_folders_settings.each do |settings|
-          settings['type'] = settings['type'] ||= 'virtual_box'
-          host = settings['host']
-          guest = settings['guest']
-
-          ['host', 'guest'].each do |key|
-            settings.delete(key)
+          synced_folder.each do |key, val|
+            next if ["_id", "host", "guest"].include?(key)
+            options[key.to_sym] = val
           end
 
-          settings.each do |key, val|
-            settings[key.to_sym] = val
-            settings.delete(key)
-          end
+          @logger.debug("host: #{host}, guest: #{guest}, options: #{options}")
 
-          config.vm.synced_folder host, guest, settings
+          config.vm.synced_folder host, guest, options
         end
       end
     end
