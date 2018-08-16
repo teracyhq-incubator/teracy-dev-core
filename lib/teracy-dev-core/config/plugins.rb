@@ -29,7 +29,6 @@ module TeracyDevCore
             @logger.debug("configuring `#{plugin['name']}` with options: #{options}")
             pluginConfig = config.send(config_key.to_sym)
             pluginConfig.set_options(options)
-            @logger.debug("configured for #{config_key}: #{pluginConfig.inspect}")
           end
         end
       end
