@@ -43,7 +43,7 @@ module TeracyDevCore
           end
 
           if plugin['enabled'] != true
-            @logger.info("#{plugin_name} is installed but not enabled so its settings is ignored")
+            @logger.debug("#{plugin_name} is installed but not enabled so its settings is ignored")
             return false
           end
           return true
