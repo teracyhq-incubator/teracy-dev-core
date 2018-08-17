@@ -18,7 +18,7 @@ teracy-dev:
   extensions:
     - _id: "0"
       location:
-        git: https://github.com/hoatle/teracy-dev-core.git
+        git: https://github.com/teracyhq-incubator/teracy-dev-core.git
 ```
 
 
