@@ -12,7 +12,17 @@ module TeracyDevCore
           @logger.debug("provider_settings: #{provider_settings}")
           case provider_settings['type']
           when "virtualbox"
-            # TODO: check require_version
+            current_version = `VBoxManage --version`
+
+            if !TeracyDev::Util.require_version_valid?(
+              current_version, provider_settings['require_version'])
+              @logger.error("Your current virtualbox (#{current_version}) is not up to date.\
+                The required version is #{provider_settings['require_version']}.
+                Please upgrade it to the required version then run `VBoxManage --version` to check.".squeeze)
+
+              abort
+            end
+            
             configure_virtualbox(provider_settings, config)
           end
         end
