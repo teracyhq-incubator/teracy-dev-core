@@ -19,6 +19,8 @@ module TeracyDevCore
               @logger.error("Your current virtualbox (#{current_version}) is not up to date.\
                 The required version is #{provider_settings['require_version']}.
                 Please upgrade it to the required version then run `VBoxManage --version` to check.".squeeze)
+
+              abort
             end
             
             configure_virtualbox(provider_settings, config)
