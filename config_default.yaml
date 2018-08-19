@@ -2,10 +2,10 @@
 # format:
 # key: ${ENV_VAR}
 # key: ${ENV_VAR-:default}
-# and "#{key}" can be used for settings values if available
+# and "%{key}" can be used for settings values if available
 variables:
-  # node_name_prefix: ${NODE_NAME_PREFIX:-node}
-  # node_hostname_prefix: ${NODE_HOSTNAME_PREFIX:-teracy-dev}
+  node_name_prefix: ${NODE_NAME_PREFIX:-node}
+  node_hostname_prefix: ${NODE_HOSTNAME_PREFIX:-teracy-dev}
   # some_value: ${MY_VAR:-value}-affix
 
 
@@ -52,7 +52,7 @@ default:
 # specific nodes, each node will override the default
 nodes:
   - _id: "0"
-    name: "node-01"
+    name: "%{node_name_prefix}-01"
     primary: true
     vm:
-      hostname: "node-01.local"
+      hostname: "%{node_hostname_prefix}-01.local"

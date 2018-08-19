@@ -8,11 +8,17 @@ module TeracyDevCore
       def process(settings)
         @logger.debug("process: #{settings['variables']}")
 
-        # see `settings['variables']` as a template, then load it using `envsubst`
-        variables = `envsubst <<< "#{settings['variables']}"`
+        formatedValues = {}
 
-        # the output is a YAML string, load it then override the origin setting
-        settings['variables'] = YAML.load(variables)
+        settings['variables'].each do |key, value|
+          formatedValues[key.to_sym] = `echo #{value}`.strip
+        end if settings['variables']
+
+        # see settings as a `sprintf-like formatting`
+        # then inject values it and convert it back to YAML format
+        settings = eval(settings.to_s % formatedValues)
+
+        @logger.info("final settings: #{settings}")
 
         settings
       end
