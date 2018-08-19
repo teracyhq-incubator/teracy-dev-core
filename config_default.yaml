@@ -38,7 +38,7 @@ default:
     - _id: "0"
       enabled: true
       type: virtualbox
-      require_version: ">=5.2.14"
+      require_version: ">= 5.2.14"
       gui: false
       memory: 1024
       description: "teracy-dev #{Time.now.getutc.to_i}"
