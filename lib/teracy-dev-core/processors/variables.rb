@@ -18,7 +18,7 @@ module TeracyDevCore
         # then inject values it and convert it back to YAML format
         settings = eval(settings.to_s % formatedValues)
 
-        @logger.info("final settings: #{settings}")
+        @logger.debug("final settings: #{settings}")
 
         settings
       end
