@@ -5,7 +5,8 @@
 # and "%{key}" can be used for settings values if available
 variables:
   node_name_prefix: ${NODE_NAME_PREFIX:-node}
-  node_hostname_prefix: ${NODE_HOSTNAME_PREFIX:-teracy-dev}
+  node_hostname_prefix: ${NODE_HOSTNAME_PREFIX:-node}
+  node_domain_affix: ${NODE_DOMAIN_AFFIX:-local}
   # some_value: ${MY_VAR:-value}-affix
 
 
@@ -42,7 +43,7 @@ default:
       require_version: ">=5.2.14"
       gui: false
       memory: 1024
-      description: "teracy-dev #{Time.now.getutc.to_i}"
+      description: "%{node_name_prefix} #{Time.now.getutc.to_i}"
 
   provisioners: []
 
@@ -55,4 +56,4 @@ nodes:
     name: "%{node_name_prefix}-01"
     primary: true
     vm:
-      hostname: "%{node_hostname_prefix}-01.local"
+      hostname: "%{node_hostname_prefix}-01.%{node_domain_affix}"
