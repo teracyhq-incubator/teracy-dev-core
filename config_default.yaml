@@ -40,7 +40,7 @@ default:
     - _id: "0"
       enabled: true
       type: virtualbox
-      require_version: ">=5.2.14"
+      require_version: ">= 5.2"
       gui: false
       memory: 1024
       description: "%{node_name_prefix} #{Time.now.getutc.to_i}"
