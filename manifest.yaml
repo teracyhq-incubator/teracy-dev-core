@@ -1,4 +1,4 @@
 name: teracy-dev-core
 version: "0.2.0-SNAPSHOT"
 description: teracy-dev core extension
-target: ">= 0.6.0-a1-SNAPSHOT"
+target: ">= 0.6.0-a1-SNAPSHOT, < 0.7.0"

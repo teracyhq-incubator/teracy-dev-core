@@ -13,12 +13,40 @@ To override the built-in config, create `workspace/teracy-dev-entry/config_defau
 following similar content:
 
 
+- Use specific version:
+
 ```yaml
 teracy-dev:
   extensions:
     - _id: "0"
       location:
         git: https://github.com/teracyhq-incubator/teracy-dev-core.git
+        branch: v0.1.0
+      require_version: ">= 0.1.0, < 0.2.0"
+```
+
+- Use latest stable version (auto update):
+
+```yaml
+teracy-dev:
+  extensions:
+    - _id: "0"
+      location:
+        git: https://github.com/teracyhq-incubator/teracy-dev-core.git
+        branch: master
+      require_version: ">= 0.1.0, < 0.2.0"
+```
+
+- Use latest develop version (auto update):
+
+```yaml
+teracy-dev:
+  extensions:
+    - _id: "0"
+      location:
+        git: https://github.com/teracyhq-incubator/teracy-dev-core.git
+        branch: develop
+      require_version: ">= 0.2.0-SNAPSHOT"
 ```
 
 
@@ -36,4 +64,6 @@ teracy-dev:
         lookup: workspace
       location:
         git: git@github.com:hoatle/teracy-dev-core.git # your forked repo
+        branch: develop
+      require_version: ">= 0.2.0-SNAPSHOT"
 ```
