@@ -18,6 +18,7 @@ module TeracyDevCore
   def self.init
     TeracyDev.register_processor(TeracyDevCore::Processors::Variables.new)
 
+    TeracyDev.register_configurator(TeracyDevCore::Config::VM.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::Networks.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::Plugins.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::Provisioners.new)
@@ -25,7 +26,6 @@ module TeracyDevCore
     TeracyDev.register_configurator(TeracyDevCore::Config::SyncedFolders.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::Vgrant.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::VirtualBoxProvider.new)
-    TeracyDev.register_configurator(TeracyDevCore::Config::VM.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::WinRM.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::WinSSH.new)
   end
