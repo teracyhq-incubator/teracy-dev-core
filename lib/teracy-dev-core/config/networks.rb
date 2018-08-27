@@ -1,4 +1,5 @@
 require 'teracy-dev/config/configurator'
+require 'teracy-dev/util'
 
 module TeracyDevCore
   module Config
@@ -7,20 +8,36 @@ module TeracyDevCore
 
       def configure_node(settings, config)
         networks_settings = settings['vm']['networks']
-        configure_networks(networks_settings, config)
+
+        configure_networks(settings['_id'], networks_settings, config)
       end
 
-      def configure_networks(networks_settings, config)
+      private
+
+      def configure_networks(node_id, networks_settings, config)
         networks_settings ||= []
         @logger.debug("configure_networks: #{networks_settings}")
         networks_settings.each do |vm_network|
-          if vm_network['mode'] == 'forwarded_port'
+          # mode is deprecated, see: https://github.com/teracyhq-incubator/teracy-dev-core/issues/9
+          network_type = vm_network['type'] || vm_network['mode']
+          if TeracyDev::Util.exist? vm_network['mode']
+            @logger.warn("'mode' is deprecated, use 'type' instead for networks")
+          end
+
+          network_id = vm_network['_id']
+
+          id = "#{node_id}-#{network_type}-#{network_id}"
+
+          if network_type == 'forwarded_port'
             vm_network['forwarded_ports'].each do |item|
-              config.vm.network :forwarded_port, guest: item['guest'], host: item['host']
+              item_id = "#{id}-#{item['_id']}"
+              config.vm.network :forwarded_port, guest: item['guest'], host: item['host'], id: item_id
             end
           else
-            options = {}
-            case vm_network['mode']
+            options = {
+              id: id
+            }
+            case network_type
             when 'private_network'
               options[:ip] = vm_network['ip'] unless vm_network['ip'].nil? or vm_network['ip'].strip().empty?
               if options[:ip].nil? or options[:ip].empty?
@@ -33,7 +50,7 @@ module TeracyDevCore
               options[:ip] = vm_network['ip'] unless vm_network['ip'].nil? or vm_network['ip'].strip().empty?
               options[:bridge] = vm_network['bridge'] unless vm_network['bridge'].nil? or vm_network['bridge'].empty?
             end
-            config.vm.network vm_network['mode'], options
+            config.vm.network network_type, options
           end
         end
       end
