@@ -21,8 +21,8 @@ teracy-dev:
     - _id: "0"
       location:
         git: https://github.com/teracyhq-incubator/teracy-dev-core.git
-        branch: v0.1.0
-      require_version: ">= 0.1.0, < 0.2.0"
+        branch: v0.2.0
+      require_version: ">= 0.2.0"
 ```
 
 - Use latest stable version (auto update):
@@ -34,7 +34,7 @@ teracy-dev:
       location:
         git: https://github.com/teracyhq-incubator/teracy-dev-core.git
         branch: master
-      require_version: ">= 0.1.0, < 0.2.0"
+      require_version: ">= 0.2.0"
 ```
 
 - Use latest develop version (auto update):
@@ -46,7 +46,7 @@ teracy-dev:
       location:
         git: https://github.com/teracyhq-incubator/teracy-dev-core.git
         branch: develop
-      require_version: ">= 0.2.0-SNAPSHOT"
+      require_version: ">= 0.3.0-SNAPSHOT"
 ```
 
 
@@ -65,5 +65,5 @@ teracy-dev:
       location:
         git: git@github.com:hoatle/teracy-dev-core.git # your forked repo
         branch: develop
-      require_version: ">= 0.2.0-SNAPSHOT"
+      require_version: ">= 0.3.0-SNAPSHOT"
 ```
