@@ -38,7 +38,7 @@ module TeracyDevCore
           plugin_name = plugin['name']
 
           if !TeracyDev::Plugin.installed?(plugin_name)
-            @logger.warn("#{plugin_name} is not installed")
+            @logger.debug("#{plugin_name} is not installed")
             return false
           end
 
