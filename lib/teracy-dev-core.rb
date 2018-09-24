@@ -7,6 +7,7 @@ require_relative 'teracy-dev-core/config/ssh'
 require_relative 'teracy-dev-core/config/synced_folders'
 require_relative 'teracy-dev-core/config/vgrant'
 require_relative 'teracy-dev-core/config/virtualbox_provider'
+require_relative 'teracy-dev-core/config/vmware_provider.rb'
 require_relative 'teracy-dev-core/config/vm'
 require_relative 'teracy-dev-core/config/winrm'
 require_relative 'teracy-dev-core/config/winssh'
@@ -26,6 +27,7 @@ module TeracyDevCore
     TeracyDev.register_configurator(TeracyDevCore::Config::SyncedFolders.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::Vgrant.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::VirtualBoxProvider.new)
+    TeracyDev.register_configurator(TeracyDevCore::Config::VMwareProvider.new) # Use for vmware provider.
     TeracyDev.register_configurator(TeracyDevCore::Config::WinRM.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::WinSSH.new)
   end
