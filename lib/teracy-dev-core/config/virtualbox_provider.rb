@@ -14,7 +14,8 @@ module TeracyDevCore
           when "virtualbox"
             # remove any words after the main version
             # example: 5.1.14r1 => 5.1.141
-            current_version = `VBoxManage --version`.gsub /[a-zA-Z]/, ''
+            # current_version = `VBoxManage --version`.gsub /[a-zA-Z]/, ''
+            current_version = "#{VagrantPlugins::ProviderVirtualBox::Driver::Meta.new.version}".gsub /[a-zA-Z]/, ''
 
             if !TeracyDev::Util.require_version_valid?(current_version,
                 provider_settings['require_version'])
