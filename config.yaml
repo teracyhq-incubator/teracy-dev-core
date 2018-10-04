@@ -2,6 +2,7 @@
 # format:
 # key: ${ENV_VAR}
 # key: ${ENV_VAR-:default}
+# key: value
 # and "%{key}" can be used for settings values if available
 variables:
   node_name_prefix: ${NODE_NAME_PREFIX:-node}
