@@ -1,6 +1,17 @@
 # Change Log
 
 
+## [v0.3.0][] (2018-10-04)
+
+- Bug Fixes:
+  + VBoxManage not found on Windows and related problems on Windows
+
+- Tasks:
+  + update manifest to target teracy-dev ">= 0.6.0-a4, < 0.7.0"
+
+
+Details: https://github.com/teracyhq-incubator/teracy-dev-core/milestone/3?closed=1
+
 
 ## [v0.2.0][] (2018-08-28)
 
@@ -27,3 +38,4 @@ Details: https://github.com/teracyhq-incubator/teracy-dev-core/milestone/1?close
 
 [v0.1.0]: https://github.com/teracyhq-incubator/teracy-dev-core/milestone/1?closed=1
 [v0.2.0]: https://github.com/teracyhq-incubator/teracy-dev-core/milestone/2?closed=1
+[v0.3.0]: https://github.com/teracyhq-incubator/teracy-dev-core/milestone/3?closed=1
