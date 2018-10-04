@@ -28,6 +28,8 @@ module TeracyDevCore
             @logger.debug("KEY: #{key}, env_key: #{match_group[0]}, env_value: #{env_value}, env_default: #{env_default}")
 
             formatedValues[key.to_sym] = TeracyDev::Util.exist?(env_value) ? env_value : env_default
+          else
+            formatedValues[key.to_sym] = value
           end
         end if settings['variables']
 
