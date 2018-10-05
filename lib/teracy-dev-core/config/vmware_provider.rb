@@ -9,9 +9,11 @@ module TeracyDevCore
         providers_settings = settings['providers'] ||= []
 
         providers_settings.each do |provider_settings|
-          if provider_settings['type'].include?('vmware')
+          next if !provider_settings['enabled']
+          case provider_settings['type']
+          when "vmware_desktop"
             @logger.debug("provider_settings: #{provider_settings}")
-            configure_vmware(provider_settings, config) if provider_settings['enabled'] == true
+            configure_vmware(provider_settings, config)
           end
         end
       end
@@ -19,24 +21,14 @@ module TeracyDevCore
       private
 
       def configure_vmware(provider_settings, config)
-        config.vm.provider provider_settings['type'] do |vmware|
-          vmware.gui = true if provider_settings['gui'] == true
+        options = provider_settings.dup
 
-          provider_settings.each do |key, val|
-            if provider_settings[key] == "vmx" and !provider_settings[key].nil?
-              provider_settings['vmx'].each do |vmx_key, vmx_val|
-                vmx_val = vmx_val.to_s.strip()
-                if !vmx_val.empty?
-                  vmware.vmx["#{vmx_key}"] = vmx_val
-                end
-              end
-            else
-              val = val.to_s.strip()
-              if !val.empty?
-                vmware.provider_settings[key] = val
-              end
-            end
-          end
+        ["_id", "type", "enabled"].each do |key|
+          options.delete(key)
+        end
+
+        config.vm.provider "vmware_desktop" do |vmware|
+          vmware.set_options(options)
         end
       end
     end
