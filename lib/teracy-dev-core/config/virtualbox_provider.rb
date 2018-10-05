@@ -9,9 +9,10 @@ module TeracyDevCore
         providers_settings = settings['providers'] ||= []
 
         providers_settings.each do |provider_settings|
-          @logger.debug("provider_settings: #{provider_settings}")
+          next if !provider_settings['enabled']
           case provider_settings['type']
           when "virtualbox"
+            @logger.debug("provider_settings: #{provider_settings}")
             # remove any words after the main version
             # example: 5.1.14r1 => 5.1.141
             # current_version = `VBoxManage --version`.gsub /[a-zA-Z]/, ''
@@ -25,7 +26,6 @@ module TeracyDevCore
 
               abort
             end
-            
             configure_virtualbox(provider_settings, config)
           end
         end
