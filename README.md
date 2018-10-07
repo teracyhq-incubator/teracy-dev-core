@@ -67,3 +67,57 @@ teracy-dev:
         branch: develop
       require_version: ">= 0.4.0-SNAPSHOT"
 ```
+
+## Supported configuration
+These are the supported configuration in teracy-dev-core: `variables`, `vagrant`, `default`, `node`.
+You can see the details about the default configuration in the `config.yaml` file.
+
+
+### Examples
+
+This section gives you some examples about the supported configuration in teracy-dev-core, so you should know how
+to override the default configuration.
+
+You should add your new configuration into the `workspace/teracy-dev-entry/config_override.yaml`.
+
+*vagrant*
+
+Please see an example at `workspace/teracy-dev-essential/blob/develop/config.yaml`.
+
+*default*
+
+This `default` configuration is set for all nodes to use. It consits of 4 configuration: `vm`, `providers`, `provisioners`,
+and `plugins`.
+ 
+- `providers`: see more at https://www.vagrantup.com/docs/providers/.
+- `provisioners`: by default, we have 2 provisions : `host`, and `guest`. You can see more at https://www.vagrantup.com/docs/provisioning/.
+- `plugins`: see more at https://www.vagrantup.com/docs/plugins/.
+
+
+*node*
+
+```yaml
+	nodes:
+	  - _id: "0" # This node is defined by default.
+	    vm:
+	      networks:
+	        - _id: "0"
+	          type: public_network
+	   - _id: "1"
+	    name: "%{node_name_prefix}-02"
+	    vm:
+	      hostname: "%{node_hostname_prefix}-02.%{node_domain_affix}"
+	      networks:
+	        - _id: "0"
+	          type: public_network
+	          ip: 192.168.1.111
+	   - _id: "2"
+	    name: "%{node_name_prefix}-03"
+	    vm:
+	      hostname: "%{node_hostname_prefix}-03.%{node_domain_affix}"
+	      networks:
+	        - _id: "0"
+	          type: private_network
+```
+
+
