@@ -3,12 +3,14 @@
 # key: ${ENV_VAR}
 # key: ${ENV_VAR-:default}
 # key: value
-# and "%{key}" can be used for settings values if available
+# and "%{key}" is used for settings values if available
+# %% is used to escape this % special character in your config
 variables:
   node_name_prefix: ${NODE_NAME_PREFIX:-node}
   node_hostname_prefix: ${NODE_HOSTNAME_PREFIX:-node}
   node_domain_affix: ${NODE_DOMAIN_AFFIX:-local}
-  # some_value: ${MY_VAR:-value}-affix
+  # some_env: ${MY_VAR:-value}-affix
+  # env_key: value
 
 
 
