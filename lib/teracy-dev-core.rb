@@ -12,11 +12,13 @@ require_relative 'teracy-dev-core/config/vm'
 require_relative 'teracy-dev-core/config/winrm'
 require_relative 'teracy-dev-core/config/winssh'
 
+require_relative 'teracy-dev-core/processors/extension_path'
 require_relative 'teracy-dev-core/processors/variables'
 
 
 module TeracyDevCore
   def self.init
+    TeracyDev.register_processor(TeracyDevCore::Processors::ExtensionPath.new)
     TeracyDev.register_processor(TeracyDevCore::Processors::Variables.new)
 
     TeracyDev.register_configurator(TeracyDevCore::Config::VM.new)
@@ -32,4 +34,3 @@ module TeracyDevCore
     TeracyDev.register_configurator(TeracyDevCore::Config::WinSSH.new)
   end
 end
-
