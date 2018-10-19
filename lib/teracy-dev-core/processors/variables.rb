@@ -12,10 +12,10 @@ module TeracyDevCore
         formatedValues = {}
 
         settings['variables'].each do |key, value|
-          match_string = /\$\{(.*):\-(.*)?\}/.match(value)
+          match_string = /\$\{(.*):\-(.*)?\}/.match(value.to_s)
 
           if !match_string
-            match_string = /\$\{(.*)\}/.match(value)
+            match_string = /\$\{(.*)\}/.match(value.to_s)
           end
 
           if match_string
