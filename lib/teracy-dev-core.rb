@@ -6,8 +6,7 @@ require_relative 'teracy-dev-core/config/provisioners'
 require_relative 'teracy-dev-core/config/ssh'
 require_relative 'teracy-dev-core/config/synced_folders'
 require_relative 'teracy-dev-core/config/vgrant'
-require_relative 'teracy-dev-core/config/virtualbox_provider'
-require_relative 'teracy-dev-core/config/vmware_provider.rb'
+require_relative 'teracy-dev-core/config/provider'
 require_relative 'teracy-dev-core/config/vm'
 require_relative 'teracy-dev-core/config/winrm'
 require_relative 'teracy-dev-core/config/winssh'
@@ -15,6 +14,8 @@ require_relative 'teracy-dev-core/config/winssh'
 require_relative 'teracy-dev-core/processors/extension_path'
 require_relative 'teracy-dev-core/processors/variables'
 
+require_relative 'teracy-dev-core/providers/virtualbox'
+require_relative 'teracy-dev-core/providers/vmware'
 
 module TeracyDevCore
   def self.init
@@ -36,9 +37,14 @@ module TeracyDevCore
     TeracyDev.register_configurator(TeracyDevCore::Config::SSH.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::SyncedFolders.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::Vgrant.new)
-    TeracyDev.register_configurator(TeracyDevCore::Config::VirtualBoxProvider.new)
-    TeracyDev.register_configurator(TeracyDevCore::Config::VMwareProvider.new) # Use for vmware provider.
+    self.register_provider("virtualbox", TeracyDevCore::Providers::VirtualBox.new)
+    self.register_provider("vmware_desktop", TeracyDevCore::Providers::VMware.new)
+    TeracyDev.register_configurator(TeracyDevCore::Config::Provider.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::WinRM.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::WinSSH.new)
+  end
+
+  def self.register_provider(provider_type, provider)
+    Providers::Manager.register(provider_type, provider)
   end
 end
