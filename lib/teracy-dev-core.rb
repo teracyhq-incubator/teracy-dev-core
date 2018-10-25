@@ -37,14 +37,20 @@ module TeracyDevCore
     TeracyDev.register_configurator(TeracyDevCore::Config::SSH.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::SyncedFolders.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::Vgrant.new)
-    self.register_provider("virtualbox", TeracyDevCore::Providers::VirtualBox.new)
-    self.register_provider("vmware_desktop", TeracyDevCore::Providers::VMware.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::Provider.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::WinRM.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::WinSSH.new)
+
+    self.register_provider("virtualbox", TeracyDevCore::Providers::VirtualBox.new)
+    self.register_provider("vmware_desktop", TeracyDevCore::Providers::VMware.new)
   end
 
-  def self.register_provider(provider_type, provider)
-    Providers::Manager.register(provider_type, provider)
+  # Register one or more provider implementations for a type
+  # Providers must implement the method: configure(provider_settings, node_config) signature
+  #
+  # @since v0.4.0
+  # see: https://github.com/teracyhq-incubator/teracy-dev-core/issues/33
+  def self.register_provider(type, provider)
+    Providers::Manager.register(type, provider)
   end
 end
