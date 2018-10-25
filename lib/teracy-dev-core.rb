@@ -19,7 +19,15 @@ require_relative 'teracy-dev-core/processors/variables'
 module TeracyDevCore
   def self.init
     TeracyDev.register_processor(TeracyDevCore::Processors::ExtensionPath.new)
-    TeracyDev.register_processor(TeracyDevCore::Processors::Variables.new)
+
+    # TODO(hoatle): update this to v0.6.0-a5 instead when it's released
+     if Gem::Version.new(TeracyDev::VERSION) >= Gem::Version.new('0.6.0-a5-SNAPSHOT')
+       # this api is available since 0.6.0-a5
+       # set this to be low so that this processor will be called at the very last order
+       TeracyDev.register_processor(TeracyDevCore::Processors::Variables.new, weight = 1)
+     else
+       TeracyDev.register_processor(TeracyDevCore::Processors::Variables.new)
+     end
 
     TeracyDev.register_configurator(TeracyDevCore::Config::VM.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::Networks.new)
