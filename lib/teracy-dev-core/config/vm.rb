@@ -7,7 +7,7 @@ module TeracyDevCore
     class VM < TeracyDev::Config::Configurator
 
       def configure_node(settings, config)
-        vm_settings = settings['vm'].dup ||= {}
+        vm_settings = settings['vm'] || {}
         # exclude networks and synced_folders for this general vm config
         ["networks", "synced_folders"].each do |key|
           vm_settings.delete(key)

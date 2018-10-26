@@ -6,8 +6,8 @@ module TeracyDevCore
     class Provisioners < TeracyDev::Config::Configurator
 
       def configure_node(settings, config)
-        provisioners_settings = settings['provisioners'] ||= []
-        @logger.debug("configure_node: #{provisioners_settings}")
+        provisioners_settings = settings['provisioners'] || []
+        @logger.debug("provisioners_settings: #{provisioners_settings}")
         provisioners_settings.each do |provisioner_settings|
           @logger.info("provisioner ignored: #{provisioner_settings}") if provisioner_settings['enabled'] != true
           next if provisioner_settings['enabled'] != true

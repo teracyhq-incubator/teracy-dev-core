@@ -6,7 +6,7 @@ module TeracyDevCore
     class SyncedFolders < TeracyDev::Config::Configurator
 
       def configure_node(settings, config)
-        synced_folders_settings = settings['vm']['synced_folders'] ||= []
+        synced_folders_settings = settings['vm']['synced_folders'] || []
         @logger.debug("configure_node: #{synced_folders_settings}")
         synced_folders_settings.each do |synced_folder|
           options = {}

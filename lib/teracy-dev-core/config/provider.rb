@@ -8,7 +8,7 @@ module TeracyDevCore
 
       def configure_node(settings, config)
         registry = Providers::Manager.registry
-        providers_settings = settings['providers'] ||= []
+        providers_settings = settings['providers'] || []
         @logger.debug("providers_settings: #{providers_settings}")
 
         providers_settings.each do |provider_settings|
