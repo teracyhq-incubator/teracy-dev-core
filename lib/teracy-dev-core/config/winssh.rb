@@ -6,7 +6,7 @@ module TeracyDevCore
     class WinSSH < TeracyDev::Config::Configurator
 
       def configure_node(settings, config)
-        winssh_settings = settings['winssh'] ||= {}
+        winssh_settings = settings['winssh'] || {}
         @logger.debug("configure_node: #{winssh_settings}")
 
         config.winssh.set_options(winssh_settings)

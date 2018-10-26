@@ -6,7 +6,7 @@ module TeracyDevCore
     class Vgrant < TeracyDev::Config::Configurator
 
       def configure_node(settings, config)
-        vagrant_settings = settings['vagrant'] ||= {}
+        vagrant_settings = settings['vagrant'] || {}
 
         @logger.debug("configure_node: #{vagrant_settings}")
 
