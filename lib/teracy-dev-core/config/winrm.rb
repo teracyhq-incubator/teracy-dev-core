@@ -6,7 +6,7 @@ module TeracyDevCore
     class WinRM < TeracyDev::Config::Configurator
 
       def configure_node(settings, config)
-        winrm_settings = settings['winrm'] ||= {}
+        winrm_settings = settings['winrm'] || {}
         @logger.debug("configure_node: #{winrm_settings}")
 
         config.winrm.set_options(winrm_settings)

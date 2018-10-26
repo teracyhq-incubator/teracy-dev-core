@@ -7,7 +7,7 @@ module TeracyDevCore
     class SSH < TeracyDev::Config::Configurator
 
       def configure_node(settings, config)
-        ssh_settings = settings['ssh'] ||= {}
+        ssh_settings = settings['ssh'] || {}
         @logger.debug("configure_node: #{ssh_settings}")
         config.ssh.set_options(ssh_settings)
       end
