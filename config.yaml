@@ -70,6 +70,14 @@ default:
     #
     #    More setting in https://www.vagrantup.com/docs/vmware/configuration.html
 
+    # - _id: "2"
+    #   enabled: true
+    #   type: docker
+    #   image: bento/ubuntu-18.04 # require
+    #   build_dir: "." # require
+    #   git_repo: # require
+    # other settings in https://www.vagrantup.com/docs/docker/configuration.html
+
   provisioners: []
 
   # default node config level
