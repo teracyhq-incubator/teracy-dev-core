@@ -6,16 +6,9 @@ module TeracyDevCore
     class Docker < TeracyDevCore::Providers::Provider
 
       def configure(provider_settings, node_config)
-        options = provider_settings.dup
-
-        ["_id", "type", "enabled"].each do |key|
-          options.delete(key)
-        end
-
         node_config.vm.provider "docker" do |docker|
-          docker.set_options(options)
+          docker.set_options(provider_settings)
         end
-
       end
     end
   end

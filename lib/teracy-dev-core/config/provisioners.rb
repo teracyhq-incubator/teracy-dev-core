@@ -13,8 +13,10 @@ module TeracyDevCore
           provisioner_settings = item[:provisioner_settings]
           @logger.debug("provisioner_settings: #{provisioner_settings}")
 
-          @logger.info("provisioner ignored: #{provisioner_settings}") if provisioner_settings['enabled'] != true
-          next if provisioner_settings['enabled'] != true
+          unless TeracyDev::Util.true?(provisioner_settings['enabled'])
+            @logger.info("provisioner ignored: #{provisioner_settings}")
+            next
+          end
 
           type = provisioner_settings['type']
           run = 'once'
@@ -28,7 +30,7 @@ module TeracyDevCore
 
           options = provisioner_settings.dup
 
-          ["_id", "type", "enabled", "run", "preserve_order", "weight"].each do |key|
+          ["_id", "type", "name", "enabled", "run", "preserve_order", "weight"].each do |key|
             options.delete(key)
           end
 

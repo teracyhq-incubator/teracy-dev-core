@@ -20,8 +20,14 @@ module TeracyDevCore
             next
           end
 
+          options = provider_settings.dup
+
+          ["_id", "type", "enabled", "weight"].each do |key|
+            options.delete(key)
+          end
+
           providers.each do |provider|
-            provider.configure(provider_settings, config)
+            provider.configure(options, config)
           end
         end
       end
