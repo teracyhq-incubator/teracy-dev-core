@@ -69,12 +69,11 @@ teracy-dev:
 ```
 
 ## Supported configuration
-These are the supported configuration in teracy-dev-core: `variables`, `vagrant`, `default`, `node`.
+These are the supported configuration in teracy-dev-core: `variables`, `default`, `node`.
 
 
 ### variables
-`variables` which is the environment variables must be defined to use `teracy-dev`. All variables
- setting should be defined in the `variables` block.
+`variables` is used to define dynamic configuration values. You can define variable keys with environment variables.
 
  The following is the  default configuration:
 
@@ -93,45 +92,18 @@ variables:
 ```
 In which:
 
-- `node_name_prefix` param: its value is `NODE_NAME_PREFIX`. If `NODE_NAME_PREFIX` is not defined, the value
-should be the default `node`.
+- `node_name_prefix` param: its value will be the value of the env var `NODE_NAME_PREFIX` which is defined, otherwise, the value should be the default `node`.
 - `node_hostname_prefix` param: its value is `NODE_HOSTNAME_PREFIX`. If `NODE_HOSTNAME_PREFIX` is not defined, the value should be the default `node`.
 - `node_domain_affix` param: its value is `NODE_DOMAIN_AFFIX`. If `NODE_DOMAIN_AFFIX` is not defined, the value should be the default `local`.
 
 
-### vagrant
-
-The `vagrant` configuration is used for the vagrant settings. Vagrant plugins are actually
-rubygems so you can declare to use the common configuration level of any rubygems.
-
-The following is the default configuration:
-
-```yaml
-  # vagrant related settings
-vagrant:
-  # vagrant plugins are actually rubygems so you can declare to use any rubygems
-  # common config level
-  plugins: []
-    # - _id: "0"
-    #   name: vagrant-gatling-rsync
-    #   version: "" # empty means latest by default
-    #   state: installed # uninstalled
-    #   enabled: true
-    #   config_key: gatling
-    #   options:
-    #     latency: 0.5
-    #     time_format: "%H:%M:%S"
-    #     rsync_on_startup: true
-```
-
 ### default
 
-The `default` settings which is used for all nodes and should be defined in the `default` block. It
-consits of 4 configuration: `vm`, `providers`, `provisioners`, and `plugins`.
+The `default` settings which will be overridden by each nodes, so any config which is shared among nodes, we should use `default`. It consits of 4 configuration: `vm`, `providers`, `provisioners`, and `plugins`.
 
 - `vm`: Virtual machine setting 
 - `providers`: see more at https://www.vagrantup.com/docs/providers/.
-- `provisioners`: by default, we have 2 provisions : `host`, and `guest`. You can see more at
+- `provisioners`: see more at
 https://www.vagrantup.com/docs/provisioning/.
 - `plugins`: see more at https://www.vagrantup.com/docs/plugins/.
 
@@ -161,8 +133,8 @@ default:
   plugins: []
 ```
 
-### node
-The `node` configure which is used to install each node and should be defined in the `nodes` block.
+### nodes
+The `node` configure which is used to define the configuration for each VMs and should be defined in the `nodes` block.
 In this block, you can create as many nodes as you want and configure them.
 
 By defaut, we create 1 node as the `master` node:
