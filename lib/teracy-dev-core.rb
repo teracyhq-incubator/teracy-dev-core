@@ -16,6 +16,7 @@ require_relative 'teracy-dev-core/processors/variables'
 
 require_relative 'teracy-dev-core/providers/virtualbox'
 require_relative 'teracy-dev-core/providers/vmware'
+require_relative 'teracy-dev-core/providers/docker'
 
 module TeracyDevCore
   def self.init
@@ -43,6 +44,7 @@ module TeracyDevCore
 
     self.register_provider("virtualbox", TeracyDevCore::Providers::VirtualBox.new)
     self.register_provider("vmware_desktop", TeracyDevCore::Providers::VMware.new)
+    self.register_provider("docker", TeracyDevCore::Providers::Docker.new)
   end
 
   # Register one or more provider implementations for a type

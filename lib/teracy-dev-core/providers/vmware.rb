@@ -6,16 +6,9 @@ module TeracyDevCore
     class VMware < TeracyDevCore::Providers::Provider
 
       def configure(provider_settings, node_config)
-        options = provider_settings.dup
-
-        ["_id", "type", "enabled"].each do |key|
-          options.delete(key)
-        end
-
         node_config.vm.provider "vmware_desktop" do |vmware|
-          vmware.set_options(options)
+          vmware.set_options(provider_settings)
         end
-
       end
     end
   end
