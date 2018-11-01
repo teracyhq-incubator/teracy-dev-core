@@ -41,14 +41,14 @@ module TeracyDevCore
 
         @logger.debug("processed settings: #{settings}")
 
-        
-
         settings
       end
 
       private
 
       def warning_for_unused_variables settings
+        return false if !TeracyDev::Util.exist? settings['variables']
+
         extension_name_list = settings['teracy-dev']['extensions'].map { |x|
           "#{TeracyDev::Extension::Manager.manifest(x)['name']}-path"
         }
