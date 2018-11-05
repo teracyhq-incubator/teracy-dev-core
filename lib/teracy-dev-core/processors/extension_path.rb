@@ -7,7 +7,7 @@ module TeracyDevCore
     class ExtensionPath < TeracyDev::Processors::Processor
 
       def process(settings)
-        settings['variables'] = settings['variables'] || []
+        settings['variables'] = settings['variables'] || {}
         # Export extensions path to variables
         settings['teracy-dev']['extensions'].each do |extension|
           next if extension['enabled'] != true
