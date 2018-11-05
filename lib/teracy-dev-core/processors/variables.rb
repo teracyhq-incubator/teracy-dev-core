@@ -33,8 +33,6 @@ module TeracyDevCore
           end
         end if settings['variables']
 
-        warning_for_unused_variables settings
-
         # see settings as a `sprintf-like formatting`
         # then inject values it and convert it back to YAML format
         settings = eval(settings.to_s % formatedValues)
@@ -42,34 +40,6 @@ module TeracyDevCore
         @logger.debug("processed settings: #{settings}")
 
         settings
-      end
-
-      private
-
-      def warning_for_unused_variables settings
-        return false if !TeracyDev::Util.exist? settings['variables']
-
-        extension_name_list = settings['teracy-dev']['extensions'].map { |x|
-          "#{TeracyDev::Extension::Manager.manifest(x)['name']}-path"
-        }
-
-        used_variable_list = settings['variables'].map { |k, v| k }
-
-        unused_variable_list = []
-
-        setting_str = settings.to_s
-
-        used_variable_list.map { |variable|
-          found = Regexp.new("\%\{#{variable}\}", 'm').match(setting_str)
-
-          if found.nil? and !extension_name_list.include? variable
-            unused_variable_list << variable
-          end
-        }
-
-        if unused_variable_list.length > 0
-          @logger.warn("#{unused_variable_list} are not used in settings, please make sure this is intended.")
-        end
       end
     end
   end
