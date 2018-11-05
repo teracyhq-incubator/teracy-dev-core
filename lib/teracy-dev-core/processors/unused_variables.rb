@@ -8,7 +8,7 @@ module TeracyDevCore
       def process(settings)
         @logger.debug("checking: #{settings['variables']}")
 
-        used_variable_list = settings['variables'].map { |k, v| k }
+        used_variable_list = (settings['variables'] || []).map { |k, v| k }
 
         unused_variable_list = []
 
@@ -23,7 +23,7 @@ module TeracyDevCore
         }
 
         if unused_variable_list.length > 0
-          @logger.warn("#{unused_variable_list} are not used in settings, please make sure this is intended.")
+          @logger.warn("The variable(s): #{unused_variable_list} is/are not used in settings, please make sure this is intended.")
         end
 
         settings
