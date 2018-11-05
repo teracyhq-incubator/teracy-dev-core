@@ -12,6 +12,7 @@ require_relative 'teracy-dev-core/config/winrm'
 require_relative 'teracy-dev-core/config/winssh'
 
 require_relative 'teracy-dev-core/processors/extension_path'
+require_relative 'teracy-dev-core/processors/unused_variables'
 require_relative 'teracy-dev-core/processors/variables'
 
 require_relative 'teracy-dev-core/providers/virtualbox'
@@ -20,6 +21,7 @@ require_relative 'teracy-dev-core/providers/docker'
 
 module TeracyDevCore
   def self.init
+    TeracyDev.register_processor(TeracyDevCore::Processors::UnusedVariables.new)
     TeracyDev.register_processor(TeracyDevCore::Processors::ExtensionPath.new)
 
     # TODO(hoatle): update this to v0.6.0-a5 instead when it's released
