@@ -93,8 +93,8 @@ variables:
 In which:
 
 - `node_name_prefix` param: its value will be the value of the env var `NODE_NAME_PREFIX` which is defined, otherwise, the value should be the default `node`.
-- `node_hostname_prefix` param: its value is `NODE_HOSTNAME_PREFIX`. If `NODE_HOSTNAME_PREFIX` is not defined, the value should be the default `node`.
-- `node_domain_affix` param: its value is `NODE_DOMAIN_AFFIX`. If `NODE_DOMAIN_AFFIX` is not defined, the value should be the default `local`.
+- `node_hostname_prefix` param: its value will be the value of the env var `NODE_HOSTNAME_PREFIX` which is defined, otherwise, the value should be the default `node`.
+- `node_domain_affix` param: its value will be the value of the env var `NODE_DOMAIN_AFFIX` which is defined, otherwise, the value should be the default `local`.
 
 
 ### default
