@@ -154,5 +154,12 @@ nodes:
 This section gives you some examples about the supported configuration in teracy-dev-core, so you should know how
 to override the default configuration.
 
-Please see an example at `examples/config_example.yaml`.
+Please see an example at `examples/config.example.yaml`.
 
+To run the example above, you should follow the commands below:
+
+```yaml
+$ cd ~/teracy-dev
+$ cp workspace/teracy-dev-core/examples/config.example.yaml workspace/teracy-dev-entry/config_override.yaml
+$ vagrant up
+```
