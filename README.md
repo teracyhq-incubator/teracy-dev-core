@@ -18,11 +18,11 @@ following similar content:
 ```yaml
 teracy-dev:
   extensions:
-    - _id: "0"
+    - _id: "kernel-core"
       location:
         git: https://github.com/teracyhq-incubator/teracy-dev-core.git
-        branch: v0.3.0
-      require_version: ">= 0.3.0"
+        branch: v0.4.0
+      require_version: ">= 0.4.0"
 ```
 
 - Use latest stable version (auto update):
@@ -30,11 +30,11 @@ teracy-dev:
 ```yaml
 teracy-dev:
   extensions:
-    - _id: "0"
+    - _id: "kernel-core"
       location:
         git: https://github.com/teracyhq-incubator/teracy-dev-core.git
         branch: master
-      require_version: ">= 0.3.0"
+      require_version: ">= 0.4.0"
 ```
 
 - Use latest develop version (auto update):
@@ -42,11 +42,11 @@ teracy-dev:
 ```yaml
 teracy-dev:
   extensions:
-    - _id: "0"
+    - _id: "kernel-core"
       location:
         git: https://github.com/teracyhq-incubator/teracy-dev-core.git
         branch: develop
-      require_version: ">= 0.4.0-SNAPSHOT"
+      require_version: ">= 0.5.0-SNAPSHOT"
 ```
 
 
@@ -59,11 +59,11 @@ similar content into `workspace/teracy-dev-entry/config_override.yaml`:
 ```yaml
 teracy-dev:
   extensions:
-    - _id: "0"
+    - _id: "kernel-core"
       path:
         lookup: workspace
       location:
         git: git@github.com:hoatle/teracy-dev-core.git # your forked repo
         branch: develop
-      require_version: ">= 0.4.0-SNAPSHOT"
+      require_version: ">= 0.5.0-SNAPSHOT"
 ```
