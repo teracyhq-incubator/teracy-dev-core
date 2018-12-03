@@ -47,7 +47,8 @@ default:
     synced_folders: []
 
   providers:
-    - _id: "0"
+    - _id: "core-virtualbox"
+      _id_deprecated: "0"
       enabled: true
       type: virtualbox
       require_version: ">= 5.2"
@@ -85,7 +86,8 @@ default:
 
 # specific nodes, each node will override the default
 nodes:
-  - _id: "0"
+  - _id: "core-0"
+    _id_deprecated: "0"
     name: "%{node_name_prefix}-01"
     primary: true
     vm:
