@@ -30,7 +30,7 @@ module TeracyDevCore
 
           options = provisioner_settings.dup
 
-          ["_id", "type", "name", "enabled", "run", "preserve_order", "weight"].each do |key|
+          ["_id", "_id_deprecated", "_op", "type", "name", "enabled", "run", "preserve_order", "weight"].each do |key|
             options.delete(key)
           end
 
