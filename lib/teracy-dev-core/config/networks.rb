@@ -32,7 +32,7 @@ module TeracyDevCore
             forwarded_ports = vm_network['forwarded_ports']
 
             if !forwarded_ports.nil?
-              @logger.warn("{type: forwarded_port, forwarded_ports: [...]} is deprecated, please use {type: forwarded_port, host: ..., guest:...} instead at #{vm_network}")
+              @logger.warn("{type: forwarded_port, forwarded_ports: [...]} is deprecated, use {type: forwarded_port, host: ..., guest:...} instead for #{vm_network}")
 
               forwarded_ports.each do |item|
                 item_id = "#{id}-#{item['_id']}"
