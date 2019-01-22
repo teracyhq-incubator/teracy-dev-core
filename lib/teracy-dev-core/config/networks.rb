@@ -29,9 +29,18 @@ module TeracyDevCore
           id = "#{node_id}-#{network_type}-#{network_id}"
 
           if network_type == 'forwarded_port'
-            vm_network['forwarded_ports'].each do |item|
-              item_id = "#{id}-#{item['_id']}"
-              config.vm.network :forwarded_port, guest: item['guest'], host: item['host'], id: item_id
+            forwarded_ports = vm_network['forwarded_ports']
+
+            if !forwarded_ports.nil?
+              @logger.warn("{type: forwarded_port, forwarded_ports: [...]} is deprecated, use {type: forwarded_port, host: ..., guest:...} instead for #{vm_network}")
+
+              forwarded_ports.each do |item|
+                item_id = "#{id}-#{item['_id']}"
+
+                config.vm.network :forwarded_port, guest: item['guest'], host: item['host'], id: item_id
+              end
+            else
+              config.vm.network :forwarded_port, guest: vm_network['guest'], host: vm_network['host'], id: id
             end
           else
             options = {

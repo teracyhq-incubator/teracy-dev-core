@@ -35,7 +35,13 @@ module TeracyDevCore
 
         # see settings as a `sprintf-like formatting`
         # then inject values it and convert it back to YAML format
-        settings = eval(settings.to_s % formatedValues)
+
+        begin
+          settings = eval(settings.to_s % formatedValues)
+        rescue Exception => e
+          @logger.error("#{e}, make sure it is configured in the `variables` settings")
+          abort
+        end
 
         @logger.debug("processed settings: #{settings}")
 

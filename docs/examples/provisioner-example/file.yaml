@@ -1,0 +1,9 @@
+nodes:
+  - _id: "0"
+    provisioners:
+      - _id: file-provisioner
+        type: file
+        name: file-provisioner-name
+        source: # local path of the file or directory to be uploaded.
+        destination: # remote path on the guest machine where the source will be uploaded to
+    # see more configure for chef solo at: https://www.vagrantup.com/docs/provisioning/file.html

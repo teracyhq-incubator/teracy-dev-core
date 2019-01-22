@@ -1,0 +1,10 @@
+nodes:
+  - _id: "0"
+    provisioners:
+      - _id: "shell-provisioner"
+        name: "shell-provisioner-name"
+        type: shell
+        enabled: true
+        inline: # command will be executed
+
+    # see more configure for shell provisioner at: https://www.vagrantup.com/docs/provisioning/shell.html

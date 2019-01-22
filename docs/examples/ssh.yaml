@@ -1,0 +1,7 @@
+nodes:
+  - _id: "0" # unique id. required
+    ssh:
+      insert_key: false
+      username:
+      password:
+    # see more configure at: https://www.vagrantup.com/docs/vagrantfile/ssh_settings.html

@@ -1,0 +1,12 @@
+nodes:
+  - _id: "0"
+    provisioners:
+      - _id: ansible
+        type: ansible_local # ansible
+        name: ansible-provisioner-name
+        verbose: -vv
+        weight: 8
+        enabled: true
+        playbook: "/path/to/playbook.yaml"
+    # see more configure for ansible at: https://www.vagrantup.com/docs/provisioning/ansible.html
+    # see more configure for ansible_local at: https://www.vagrantup.com/docs/provisioning/ansible_local.html

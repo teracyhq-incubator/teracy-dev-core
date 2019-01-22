@@ -1,0 +1,28 @@
+nodes:
+  - _id: "0" # unique id. required.
+    name: "node-01"
+    vm:
+      networks:
+        - _id: "public-network-0" # unique id. required
+          type: "public_network"
+          # ip:
+    # some another config
+
+  - _id: "1"
+    name: "node-02"
+    vm:
+      hostname: "node-02.local"
+      synced_folders:
+        - _id: "entry-workspace"
+          type: rsync
+          host: "./workspace"
+          guest: "/home/vagrant/workspace"
+          rsync__exclude:
+            - ".git"
+            - ".idea"
+            - ".#*"
+          create: true
+      networks:
+        - _id: "public-network-1" # unique id. required
+          type: "private_network"
+    # some another config

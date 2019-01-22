@@ -1,0 +1,28 @@
+nodes:
+  - _id: "0" # unique id. required
+    vm:
+      box: bento/ubuntu-18.04
+      # box_version:
+      # box_url:
+      # see more configure at: https://www.vagrantup.com/docs/boxes.html
+
+      networks:
+        - _id: "public-network" # unique id. required
+          type: "public_network"
+          ip:
+        - _id: "private-network" # unique id. required
+          type: "public_network"
+          ip:
+      # see more configure at: https://www.vagrantup.com/docs/networking/
+
+      synced_folders:
+        - _id: "entry-workspace" # unique id. required
+          type: rsync
+          host: "./workspace" # requirement
+          guest: "/home/vagrant/workspace" # requirement
+          rsync__exclude:
+            - ".git"
+            - ".idea"
+            - ".#*"
+          create: true # required
+      # see more configure at: https://www.vagrantup.com/docs/synced-folders/
