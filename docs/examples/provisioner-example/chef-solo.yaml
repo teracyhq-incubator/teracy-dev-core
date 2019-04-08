@@ -1,0 +1,17 @@
+nodes:
+  - _id: "0"
+    provisioners:
+      - _id: chef
+        type: chef_solo
+        name: chef-solo-provisioner-name
+        version: 13.1.31
+        weight: 8
+        enabled: true
+        cookbooks_path:
+          - path/to/cookbook
+          - path/to/cookbook
+          # another cookbook
+        roles_path: "path/to/roles"
+        nodes_path: "path/to/nodes"
+        data_bags_path: "path/to/data_bags"
+    # see more configure for chef solo at: https://www.vagrantup.com/docs/provisioning/chef_solo.html#options

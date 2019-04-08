@@ -1,0 +1,27 @@
+nodes:
+  - _id: "0" # unique id. required
+    providers:
+      # use virtualbox
+      - _id: "core-virtualbox"
+        enabled: true
+        type: virtualbox
+        require_version: ">= 5.2.22"
+        gui: false
+        memory: 1024
+        linked_clone: true
+
+      # or use vmware-desktop
+      # you need to install vagrant-vmware-desktop first before use this provider
+      # see the installation steps at https://www.vagrantup.com/docs/vmware/installation.html
+      # or better when you configure the plugins for automation instead of manual
+      - _id: "1"
+        enabled: true
+        type: vmware_desktop
+        gui: false
+        clone_directory: "./.vagrant" # Path for storing VMware clones. This value can also be set using the VAGRANT_VMWARE_CLONE_DIRECTORY environment variable. This defaults to ./.vagrant
+        enable_vmrun_ip_lookup: true # This defaults to true
+        vmx:
+          memsize: 1024
+          numvcpus: 2
+      #
+      #    More setting in https://www.vagrantup.com/docs/vmware/configuration.html

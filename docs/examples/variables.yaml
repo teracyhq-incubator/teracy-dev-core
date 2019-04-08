@@ -1,0 +1,6 @@
+variables:
+  node_name_prefix: ${NODE_NAME_PREFIX:-node}
+  node_hostname_prefix: ${NODE_HOSTNAME_PREFIX:-node}
+  node_domain_affix: ${NODE_DOMAIN_AFFIX:-local}
+  some_env: value
+  # env_key: value

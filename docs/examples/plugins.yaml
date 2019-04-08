@@ -1,0 +1,26 @@
+vagrant:
+  plugins:
+    # install plugin
+    - _id: "essential-hostmanager"
+      name: vagrant-hostmanager
+      version: ""
+      enabled: true
+      state: "installed"
+
+    # uninstall plugin
+    - _id: "essential-hostmanager"
+      name: vagrant-hostmanager
+      version: ""
+      enabled: true
+      state: "uninstalled"
+
+    # use plugin option
+    - _id: "essential-hostmanager"
+      name: vagrant-hostmanager
+      version: ""
+      enabled: true
+      state: ""
+      options:
+        manage_host: true
+        manage_guest: true
+        # some plugin options
