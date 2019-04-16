@@ -11,7 +11,7 @@ nodes:
           type: "public_network"
           ip:
         - _id: "private-network" # unique id. required
-          type: "public_network"
+          type: "private_network"
           ip:
       # see more configure at: https://www.vagrantup.com/docs/networking/
 

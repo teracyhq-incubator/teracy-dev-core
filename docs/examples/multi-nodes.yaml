@@ -23,6 +23,6 @@ nodes:
             - ".#*"
           create: true
       networks:
-        - _id: "public-network-1" # unique id. required
+        - _id: "private-network-1" # unique id. required
           type: "private_network"
     # some another config
