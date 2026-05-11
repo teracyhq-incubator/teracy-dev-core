@@ -28,8 +28,8 @@ teracy-dev:
         git:
           remote:
             origin: https://github.com/teracyhq-incubator/teracy-dev-core.git
-          branch: v0.3.0
-      require_version: ">= 0.3.0"
+          branch: v0.5.0
+      require_version: ">= 0.5.0"
 ```
 
 - Use the latest stable version (auto update):
@@ -45,7 +45,7 @@ teracy-dev:
           remote:
             origin: https://github.com/teracyhq-incubator/teracy-dev-core.git
           branch: master
-      require_version: ">= 0.4.0"
+      require_version: ">= 0.5.0"
 ```
 
 - Use the latest develop version (auto update):
@@ -61,7 +61,7 @@ teracy-dev:
           remote:
             origin: https://github.com/teracyhq-incubator/teracy-dev-core.git
           branch: develop
-      require_version: ">= 0.5.0-SNAPSHOT"
+      require_version: ">= 0.6.0-SNAPSHOT"
 ```
 
 - Run `vagrant up` or `vagrant reload --provision` (if your vagrant machine is running) to apply your configuration.
@@ -83,7 +83,7 @@ teracy-dev:
             origin: <fill your forked repo here>
             upstream: https://github.com/teracyhq-incubator/teracy-dev-core.git
         branch: develop
-      require_version: ">= 0.5.0-SNAPSHOT"
+      require_version: ">= 0.6.0-SNAPSHOT"
 ```
 
 - Run `vagrant up` or `vagrant reload --provision` (if your vagrant machine is running) to apply your configuration.

@@ -1,6 +1,23 @@
 # Change Log
 
 
+## [v0.5.0][] (2026-05-11)
+
+- Improvements:
+  + should display friendly log messages for the not configured variable key(s) #53
+  + should have consistent and intuitive config for forwarded_port network config #61
+
+- Bug Fixes:
+  + _id_deprecated, _op should be deleted from provisioner options #58
+
+- Tasks:
+  + should update README with "supported configuration" section #12
+  + should update to name _id with best practices #55
+  + should upgrade the vagrant vm box config to bento/24.04 by default #66
+
+
+Details: https://github.com/teracyhq-incubator/teracy-dev-core/milestone/5?closed=1
+
 ## [v0.4.0][] (2018-11-16)
 
 - Features:
