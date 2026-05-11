@@ -1,5 +1,6 @@
 require 'teracy-dev'
 
+require_relative 'teracy-dev-core/config/compat'
 require_relative 'teracy-dev-core/config/networks'
 require_relative 'teracy-dev-core/config/plugins'
 require_relative 'teracy-dev-core/config/provisioners'
@@ -25,6 +26,7 @@ module TeracyDevCore
     TeracyDev.register_processor(TeracyDevCore::Processors::ExtensionPath.new, weight = 2)
     TeracyDev.register_processor(TeracyDevCore::Processors::Variables.new, weight = 1)
 
+    TeracyDev.register_configurator(TeracyDevCore::Config::Compat.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::VM.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::Networks.new)
     TeracyDev.register_configurator(TeracyDevCore::Config::Plugins.new)
