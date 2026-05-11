@@ -41,7 +41,7 @@ vagrant:
 # default settings for all nodes
 default:
   vm:
-    box: bento/ubuntu-18.04
+    box: bento/ubuntu-24.04
     box_version:
     box_url:
     synced_folders: []
