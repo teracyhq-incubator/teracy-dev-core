@@ -6,6 +6,7 @@
 - Improvements:
   + should display friendly log messages for the not configured variable key(s) #53
   + should have consistent and intuitive config for forwarded_port network config #61
+  + get teracy-dev work well with vagrant >=2.2 PR#65 teracyhq/dev#621
 
 - Bug Fixes:
   + _id_deprecated, _op should be deleted from provisioner options #58
@@ -84,3 +85,4 @@ Details: https://github.com/teracyhq-incubator/teracy-dev-core/milestone/1?close
 [v0.2.0]: https://github.com/teracyhq-incubator/teracy-dev-core/milestone/2?closed=1
 [v0.3.0]: https://github.com/teracyhq-incubator/teracy-dev-core/milestone/3?closed=1
 [v0.4.0]: https://github.com/teracyhq-incubator/teracy-dev-core/milestone/4?closed=1
+[v0.5.0]: https://github.com/teracyhq-incubator/teracy-dev-core/milestone/5?closed=1
